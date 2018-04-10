@@ -1,5 +1,5 @@
 import React from 'react';
-import { InputGroup, InputGroupAddon, Input, Row, Col, Container, FormGroup, Label } from 'reactstrap';
+import { InputGroup, InputGroupAddon, Input, Row, Col, Container, FormGroup, Label, InputGroupText } from 'reactstrap';
 
 class ModalExample extends React.Component {
     constructor(props) {
@@ -41,7 +41,7 @@ class ModalExample extends React.Component {
         let matherials_list = [];
 
         for (let key in matherials) {
-            matherials_list.push(<FormGroup key={key} check>
+            matherials_list.push(<FormGroup className='mb-2' key={key} check>
                 <Label check>
                     <Input key={key} data-key={key} type="radio" value={matherials[key]} name="P_m" onChange={this.handleChange} />{' '}
                     {key}</Label>
@@ -84,7 +84,7 @@ class ModalExample extends React.Component {
 
     getMatherialPrice = () => precisionRound(this.state.a * this.state.b * this.state.P_m, 2);
 
-    getMatherialSquare = () => precisionRound(this.state.a * this.state.b, 4);
+    getMatherialSquare = () => precisionRound(this.state.a * this.state.b, 3);
 
     getRezPrice = () => (this.getRez_price(this.props.data.rez_prices, this.props.data.matherials) === -1) ? 0 : precisionRound(this.getRez_price(this.props.data.rez_prices, this.props.data.matherials) * this.state.L_rez, 2);
 
@@ -97,9 +97,10 @@ class ModalExample extends React.Component {
         let { discount, urgently, matherials } = this.props.data;
 
         return (
-            <Container>
+            <Container fluid>
                 <Row>
                     <Col sm='6'>
+                        <h3 className='mt-3'>Параметры материала</h3>
                         <FormGroup className='mb-2'>
                             <Label className='mb-1'>Длинна реза</Label>
                             <InputGroup size="sm">
@@ -108,10 +109,10 @@ class ModalExample extends React.Component {
                             </InputGroup>
                         </FormGroup>
                         <FormGroup className='mb-2'>
-                            <Label className='mb-1'>Площадь фигуры, м.кв.</Label>
+                            <Label className='mb-1'>Площадь фигуры, м<sup>2</sup></Label>
                             <InputGroup size="sm">
-                                <Input placeholder="" type="number" step="0.01" min='0' name='a' onChange={this.handleChange} />
-                                <Input placeholder="" type="number" step="0.01" min='0' name='b' onChange={this.handleChange} />
+                                <Input placeholder="0" type="number" step="0.01" min='0' name='a' onChange={this.handleChange} />
+                                <Input placeholder="0" type="number" step="0.01" min='0' name='b' onChange={this.handleChange} />
                                 <InputGroupAddon addonType="append">м.</InputGroupAddon>
                             </InputGroup>
                         </FormGroup>
@@ -119,11 +120,13 @@ class ModalExample extends React.Component {
                             <Label className='mb-1'>Площадь гравировки</Label>
                             <InputGroup size="sm">
                                 <Input placeholder="0" type="number" step="0.01" min='0' name='S_gr' onChange={this.handleChange} />
-                                <InputGroupAddon addonType="append">м.кв.</InputGroupAddon>
+                                <InputGroupAddon addonType="append">
+                                    <InputGroupText>м<sup>2</sup></InputGroupText>                                
+                                </InputGroupAddon>
                             </InputGroup>
                         </FormGroup>
                         <FormGroup className='mt-4'>
-                            <h4>Дополнительные опции</h4>
+                            <h3 className='mt-3'>Дополнительные опции</h3>
                         </FormGroup>
                         <FormGroup>
                             <Label for="exampleSelect">Покраска</Label>
@@ -146,34 +149,35 @@ class ModalExample extends React.Component {
                             </Input>
                         </FormGroup>
                     </Col>
-                    <Col sm='3'>
+                    <Col sm='6' md='3'>
+                        <h3 className='mt-3'>Материал</h3>
                         {this.getMatherials(matherials)}
                     </Col>
-                    <Col sm='3'>
-                        <h4>Результат</h4>
+                    <Col md='3'>
+                        <h3 className='mt-3'>Результат</h3>
                         <div>
-                            <Label>Площадь материала:&nbsp;</Label><Label>{this.getMatherialSquare()}</Label><Label>м.кв.</Label>
+                            <Label>Площадь материала:&nbsp;</Label><Label className='fw-900'>{this.getMatherialSquare()}</Label><Label className='fw-900'>м<sup>2</sup></Label>
                         </div>
                         <div>
-                            <Label>Цена материала:&nbsp;</Label><Label>{this.getMatherialPrice()}</Label><Label>грн.</Label>
+                            <Label>Цена материала:&nbsp;</Label><Label className='fw-900'>{this.getMatherialPrice()}</Label><Label className='fw-900'>грн.</Label>
                         </div>
                         <div>
-                            <Label>Цена резки:&nbsp;</Label><Label>{this.getRezPrice()}</Label><Label>грн.</Label>
+                            <Label>Цена резки:&nbsp;</Label><Label className='fw-900'>{this.getRezPrice()}</Label><Label className='fw-900'>грн.</Label>
                         </div>
                         <div>
-                            <Label>Цена гравировки:&nbsp;</Label><Label>{this.getGravPrice()}</Label><Label>грн.</Label>
+                            <Label>Цена гравировки:&nbsp;</Label><Label className='fw-900'>{this.getGravPrice()}</Label><Label className='fw-900'>грн.</Label>
                         </div>
                         <div>
-                            <Label>Скидка ({this.state.discount}%):&nbsp;</Label><Label>{this.getDiscountValue()}</Label><Label>грн.</Label>
+                            <Label>Скидка ({this.state.discount}%):&nbsp;</Label><Label className='fw-900'>{this.getDiscountValue()}</Label><Label className='fw-900'>грн.</Label>
                         </div>
                         <div>
-                            <Label>Цена покраски:&nbsp;</Label><Label>{this.getPaintingPrice()}</Label><Label>грн.</Label>
+                            <Label>Цена покраски:&nbsp;</Label><Label className='fw-900'>{this.getPaintingPrice()}</Label><Label className='fw-900'>грн.</Label>
                         </div>
                         <div>
-                            <Label>Срочность:&nbsp;</Label><Label>{this.getUrgentPrice()}</Label><Label>грн.</Label>
+                            <Label>Срочность:&nbsp;</Label><Label className='fw-900'>{this.getUrgentPrice()}</Label><Label className='fw-900'>грн.</Label>
                         </div>
-                        <div className=''>
-                            <h6>Итого:&nbsp;<Label>
+                        <div className='mt-2'>
+                            <h6>Итого:&nbsp;<span>
                                 {precisionRound(
                                     this.getMatherialPrice() +
                                     this.getRezPrice() +
@@ -183,7 +187,7 @@ class ModalExample extends React.Component {
                                     this.getUrgentPrice(),
                                     2)
                                 }
-                            </Label><Label>грн.</Label></h6>
+                            </span><span>грн.</span></h6>
                         </div>
                     </Col>
                 </Row>

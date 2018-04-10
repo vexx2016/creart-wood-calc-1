@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Calc from './Calc';
 import 'bootstrap/dist/css/bootstrap.css';
-const rootEl = document.getElementById('root');
+import './App.css';
 
 
 

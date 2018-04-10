@@ -1,28 +1,44 @@
-.App {
-  text-align: center;
+html {
+    text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
+    font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.15;
+    font-size: -webkit-calc(.48077vw + 10.23px);
+    font-size: calc(.48077vw + 10.23px);
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+body {
+    color: black;
+    font-family: Montserrat, sans-serif;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+h3 {
+    font-size: 1.25rem;
+    line-height: 1.17;
+    margin-bottom: .8rem;
+    font-weight: 900 !important;
 }
 
-.App-title {
-  font-size: 1.5em;
+input {
+    line-height: 1.1;
+    background-color: rgba(96, 123, 205, .1);
 }
 
-.App-intro {
-  font-size: large;
+label {
+    font-size: .75rem;
+    line-height: 1.5;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.form-check-input {
+    margin-top: 0;
+    /* line-height: 1.5; */
+}
+
+.form-check {
+    line-height: 1.1;
+}
+
+.fw-900 {
+  font-weight: 900;
 }
