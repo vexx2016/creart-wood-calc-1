@@ -6,12 +6,24 @@ html {
     line-height: 1.15;
     font-size: -webkit-calc(.48077vw + 10.23px);
     font-size: calc(.48077vw + 10.23px);
+    min-height: 100%;
+    background-image: url('img/bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 body {
-    color: black;
+    height: 100%;
+    color: white;
     font-family: Montserrat, sans-serif;
+    background: transparent;
 }
+
+.here {
+    border: 1px dashed red;
+}
+
+#root {}
 
 h3 {
     font-size: 1.25rem;
@@ -40,5 +52,5 @@ label {
 }
 
 .fw-900 {
-  font-weight: 900;
+    font-weight: 900;
 }

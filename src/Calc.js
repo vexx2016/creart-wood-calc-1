@@ -119,41 +119,19 @@ class ModalExample extends React.Component {
                         <FormGroup className='mb-2'>
                             <Label className='mb-1'>Площадь гравировки</Label>
                             <InputGroup size="sm">
-                                <Input placeholder="0" type="number" step="0.01" min='0' name='S_gr' onChange={this.handleChange} />
+                                <Input placeholder="0" type="number" step="1" min='0' name='S_gr' onChange={this.handleChange} />
                                 <InputGroupAddon addonType="append">
-                                    <InputGroupText>м<sup>2</sup></InputGroupText>                                
+                                    <InputGroupText>см<sup>2</sup></InputGroupText>
                                 </InputGroupAddon>
                             </InputGroup>
                         </FormGroup>
-                        <FormGroup className='mt-4'>
-                            <h3 className='mt-3'>Дополнительные опции</h3>
-                        </FormGroup>
-                        <FormGroup>
-                            <Label for="exampleSelect">Покраска</Label>
-                            <Input size="sm" type="select" value={this.state.isPaint} id="exampleSelect" name='isPaint' onChange={this.handleChange}>
-                                <option value={0}>Нет</option>
-                                <option value={1}>Да</option>
-                            </Input>
-                        </FormGroup>
-                        <FormGroup className='mb-2'>
-                            <Label className='mb-1'>Скидка</Label>
-                            <Input size="sm" type="select" name="discount" onChange={this.handleChange}>
-                                {getDiscount(discount)}
-                            </Input>
-                        </FormGroup>
-                        <FormGroup className='mb-2'>
-                            <Label className='mb-1'>Срочный заказ</Label>
-                            <Input size="sm" type="select" name="urgently" onChange={this.handleChange}>
-                                <option value='0'>Нет</option>
-                                <option value={urgently}>Да</option>
-                            </Input>
-                        </FormGroup>
                     </Col>
-                    <Col sm='6' md='3'>
+                    <Col sm='6' md='3' className='border- border-light'>
                         <h3 className='mt-3'>Материал</h3>
                         {this.getMatherials(matherials)}
                     </Col>
-                    <Col md='3'>
+                    <Col sm='12' className='border-top border-light my-3 d-lg-none'></Col>
+                    <Col lg='3' className='order-3 order-lg-1'>
                         <h3 className='mt-3'>Результат</h3>
                         <div>
                             <Label>Площадь материала:&nbsp;</Label><Label className='fw-900'>{this.getMatherialSquare()}</Label><Label className='fw-900'>м<sup>2</sup></Label>
@@ -190,6 +168,34 @@ class ModalExample extends React.Component {
                             </span><span>грн.</span></h6>
                         </div>
                     </Col>
+                    <Col sm='12' className='border-top border-light my-3 order-2'></Col>
+                    <Col sm='6' className='order-1 order-lg-3'>
+                        <FormGroup>
+                            <h3 className=''>Дополнительные опции</h3>
+                        </FormGroup>
+                        <FormGroup>
+                            <Label for="exampleSelect">Покраска</Label>
+                            <Input bsSize="sm" type="select" value={this.state.isPaint} id="exampleSelect" name='isPaint' onChange={this.handleChange}>
+                                <option value={0}>Нет</option>
+                                <option value={1}>Да</option>
+                            </Input>
+                        </FormGroup>
+                        <FormGroup className='mb-2'>
+                            <Label className='mb-1'>Скидка</Label>
+                            <Input bsSize="sm" type="select" name="discount" onChange={this.handleChange}>
+                                {getDiscount(discount)}
+                            </Input>
+                        </FormGroup>
+                        <FormGroup className='mb-2'>
+                            <Label className='mb-1'>Срочный заказ</Label>
+                            <Input bsSize="sm" type="select" name="urgently" onChange={this.handleChange}>
+                                <option value='0'>Нет</option>
+                                <option value={urgently}>Да</option>
+                            </Input>
+                        </FormGroup>
+                    </Col>
+
+
                 </Row>
             </Container>
         );
